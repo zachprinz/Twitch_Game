@@ -28,11 +28,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-
-import sun.audio.AudioData;
-import sun.audio.AudioPlayer;
-import sun.audio.AudioStream;
-import sun.audio.ContinuousAudioDataStream;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JComboBox;
@@ -68,7 +63,6 @@ public class JavaGameMenu extends JPanel{
 		final JLabel lblPlay = new JLabel("Play");
 		lblPlay.setForeground(new Color(0, 0, 0));
 		lblPlay.addMouseListener(new MouseAdapter() {
-			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				setVisible(false);
 				setFocusable(false);
@@ -101,8 +95,6 @@ public class JavaGameMenu extends JPanel{
 		});
 		add(lblOptions_1);
 
-		
-		
 		final JLabel lblScores_1 = new JLabel("Scores");
 		lblScores_1.setForeground(new Color(0, 0, 0));
 		lblScores_1.setFont(new Font("Tahoma", Font.BOLD, 26));
@@ -123,11 +115,10 @@ public class JavaGameMenu extends JPanel{
 	  super.paintComponent( g );
 	  Graphics2D g2d = (Graphics2D) g;
 	  g2d.drawImage(backGroundImage, 0, 0, this);
-
 	}
 	
 	public Media getSong() {
-    	File file = new File(SwingStart.songLocs[comboBox.getSelectedIndex()]);
+    	File file = new File(SwingStart.songLocs[1]);
     	String uri = file.toURI().toString();
     	Media hit = new Media(uri);
     	return hit;

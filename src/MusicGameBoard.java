@@ -36,13 +36,24 @@ public class MusicGameBoard extends JPanel implements ActionListener{
 	private static ArrayList<Integer> beats;
 	static int startTime;
 	Timer time;
+	private boolean debug = true;
 	private static boolean printed = false;
 
 	public MusicGameBoard() {
 		setFocusable(true);
 		setBackground(Color.GRAY);
 		setSize(366, 366);
+		
 		setVisible(false);
+	}
+	
+	public void reset() {
+		ray.reset();
+		user.reset();
+		//beats.clear();
+		score = 0;
+		ray = new Ray();
+		user = new User();
 	}
 	
 	public void startGame() {
@@ -87,7 +98,15 @@ public class MusicGameBoard extends JPanel implements ActionListener{
 		Integer timeRun = (int) (System.currentTimeMillis()/10) - MusicGameBoard.getStartTime();
 		String timeRunString = Integer.toString(timeRun);
 		buffer.drawString("Score: " + user.getScore(), 2, 15);
+		if(debug == true)
+		{
+			buffer.setColor(Color.RED);
+			buffer.drawString(timeRunString,  0, 30);
+			buffer.drawString("Beats So Far: " + MusicGameBoard.ray.beatsSoFar, 0, 40);
+			buffer.drawString("Next Beat: " + MusicGameBoard.getBeats().get(MusicGameBoard.ray.beatsSoFar), 0, 50);
+		}
 		g.drawImage(bufferedImage, 0, 0, this);
+
 	}
 
 	public void actionPerformed(ActionEvent e) {

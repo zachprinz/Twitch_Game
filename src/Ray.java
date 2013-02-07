@@ -34,7 +34,7 @@ public class Ray {
 	private int direction = 1;
 	Random random = new Random();
 	Arc2D arc = new Arc2D.Double(0,0,360,360,startAngle,270, Arc2D.PIE);
-	MoveRay moveRay = new MoveRay();
+	MoveRay moveRay;
 	int beatsSoFar = 0;
 
 
@@ -43,13 +43,18 @@ public class Ray {
 		getPoints();
 		center = points.get(0);
 		orgin = new Point(183,183);
-		timer = new javax.swing.Timer(7, new Move());
-		timer.addActionListener(moveRay);
+		moveRay = new MoveRay();
+		timer = new javax.swing.Timer(SwingStart.subMenu.getSpeed(), moveRay);
 		timer.setRepeats(true);
 		timer.setInitialDelay(0);
 		timer.start();
 	}
 	
+	public void reset() {
+		timer.stop();
+		timer.removeActionListener(moveRay);
+		beatsSoFar = 0;
+	}
 
 	public void rotate() {
 	}

@@ -95,6 +95,12 @@ public class SwingStart extends JFrame {
     	
     	
     }
+    
+    public static void reset() {
+    	board.reset();
+    	//board.mlm.reset();
+    	subMenu.reset();
+    }
 
 	public static void main(String[] args) {
 		new SwingStart();
@@ -119,6 +125,7 @@ class ExitAction extends AbstractAction
 {
   public void actionPerformed( ActionEvent e )
   {
+	 SwingStart.reset();
      SwingStart.board.setVisible(false);
      SwingStart.menu.setVisible(true);
      SwingStart.mediaPlayer.stop();

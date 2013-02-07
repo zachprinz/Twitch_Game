@@ -32,7 +32,7 @@ public class User {
 	private boolean moving = true;
 	ImageIcon userImageIcon = new ImageIcon("user.png");
 	Image userImage = userImageIcon.getImage();
-	Move move = new Move();
+	Move move;
 	public int health = 0;
 	private int score = 0;
 
@@ -43,7 +43,8 @@ public class User {
 		height = (int) userImage.getHeight(null);
 		position = 0;
 		visible = true;
-		timer = new javax.swing.Timer(20, move);
+		move = new Move();
+		timer = new javax.swing.Timer(SwingStart.subMenu.getSpeed() - 2, move);
 		timer.setRepeats(true);
 		timer.setInitialDelay(0);
 		timer.start();
@@ -51,6 +52,11 @@ public class User {
 	}
 	public int getY() {
 		return (int) y;
+	}
+	
+	public void reset() {
+		timer.stop();
+		timer.removeActionListener(move);
 	}
 
 	public int getPosition() {
