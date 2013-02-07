@@ -30,13 +30,14 @@ public class SwingStart extends JFrame {
 	
 	static JFXPanel fxPanel;
 	
-	static String[] songLocs = new String[3];
+	static String[] songLocs = new String[4];
 
     static int selectedSong = 1;
 
 	public SwingStart() {
 		songLocs[1] = "TheRiddle.mp3";
 		songLocs[2] = "Madness.mp3";
+		songLocs[3] = "Splinter.mp3";
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(366, 366);

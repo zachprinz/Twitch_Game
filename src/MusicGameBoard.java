@@ -48,7 +48,7 @@ public class MusicGameBoard extends JPanel implements ActionListener{
 	public void startGame() {
 		user = new User();
 		ray = new Ray();
-	
+		
 		setFocusable(true);
 		setEnabled(true);
 		setVisible(true);
@@ -65,32 +65,29 @@ public class MusicGameBoard extends JPanel implements ActionListener{
 		beats = mlm.initBeats();
 	}
 
-	public void paint(Graphics g) {
-		Graphics2D g2d = (Graphics2D) g;
-		g2d.setColor(Color.DARK_GRAY);
-		g2d.fillRect(0, 0, 400, 400 );
-		g2d.drawImage(backGroundImage, 0, 0, this);
-		g2d.setColor(Color.WHITE);
-		//g2d.fillArc(3, 3, 360, 360,  ray.getStartAngle(),  270);
+	public void paint(Graphics g) {		
+		//Graphics2D g2d = (Graphics2D) g;
+		Image bufferedImage = createImage(366, 366);
+		Graphics2D buffer = (Graphics2D) bufferedImage.getGraphics();
 
-		g2d.drawImage(user.getImage(),(user.getX() - (user.getImage().getWidth(null) /2)),(user.getY() - (user.getImage().getHeight(null) /2)), this);
-		g2d.setColor(Color.GRAY);
-		
+		buffer.setColor(Color.DARK_GRAY);
+		buffer.fillRect(0, 0, 400, 400 );
+		buffer.drawImage(backGroundImage, 0, 0, this);
+		buffer.setColor(Color.WHITE);
+		buffer.drawImage(user.getImage(),(user.getX() - (user.getImage().getWidth(null) /2)),(user.getY() - (user.getImage().getHeight(null) /2)), this);
+		buffer.setColor(Color.GRAY);
 	    for(int a = 0; a < 60; a++) {
-			g2d.drawArc(183 - (3 * a), 183 - (3*a),6*a ,6*a, ray.getStartAngle(), 270); 
+			buffer.drawArc(183 - (3 * a), 183 - (3*a),6*a ,6*a, ray.getStartAngle(), 270); 
 			repaint();
 	    }
-	    g2d.setColor(Color.RED);
-	    g2d.drawLine(183, 183,(int) ray.arc.getStartPoint().getX(),(int) ray.arc.getStartPoint().getY() );
-	    g2d.drawLine(183, 183, (int)ray.arc.getEndPoint().getX(),(int) ray.arc.getEndPoint().getY() );
-
-	    
-		g2d.setColor(Color.WHITE);
+	    buffer.setColor(Color.RED);
+	    buffer.drawLine(183, 183,(int) ray.arc.getStartPoint().getX(),(int) ray.arc.getStartPoint().getY() );
+	    buffer.drawLine(183, 183, (int)ray.arc.getEndPoint().getX(),(int) ray.arc.getEndPoint().getY() );
+		buffer.setColor(Color.WHITE);
 		Integer timeRun = (int) (System.currentTimeMillis()/10) - MusicGameBoard.getStartTime();
 		String timeRunString = Integer.toString(timeRun);
-		//g2d.drawString(timeRunString, 0, 10);
-		//g2d.drawString("Score: ", 0, 10);
-		g2d.drawString("Score: " + user.getScore(), 2, 15);
+		buffer.drawString("Score: " + user.getScore(), 2, 15);
+		g.drawImage(bufferedImage, 0, 0, this);
 	}
 
 	public void actionPerformed(ActionEvent e) {

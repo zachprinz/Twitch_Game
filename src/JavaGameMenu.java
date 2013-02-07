@@ -47,7 +47,7 @@ import java.beans.PropertyChangeEvent;
 public class JavaGameMenu extends JPanel{
 
 	
-	static String[] beatLocs = new String[3];
+	static String[] beatLocs = new String[4];
 	static ImageIcon backgroundImageIcon = new ImageIcon("MenuBack.png");
 	static Image backGroundImage = backgroundImageIcon.getImage();
 
@@ -63,8 +63,9 @@ public class JavaGameMenu extends JPanel{
 		beatLocs[0] = "TheRiddle";
 		beatLocs[1] = "TheRiddle";
 		beatLocs[2] = "Madness";
+		beatLocs[3] = "Splinter";
 		
-		JLabel lblPlay = new JLabel("Play");
+		final JLabel lblPlay = new JLabel("Play");
 		lblPlay.setForeground(new Color(0, 0, 0));
 		lblPlay.addMouseListener(new MouseAdapter() {
 			@Override
@@ -75,38 +76,46 @@ public class JavaGameMenu extends JPanel{
 			}
 		});
 		lblPlay.setFont(new Font("Tahoma", Font.BOLD, 26));
-		lblPlay.setBounds(148, 279, 61, 31);
+		lblPlay.setBounds(138, 259, 101, 70);
 		add(lblPlay);
+		lblPlay.addMouseListener(new MouseAdapter() {
+		    public void mouseEntered(MouseEvent evt) {
+		    	lblPlay.setFont(new Font("Tahoma", Font.BOLD, 30));		    	
+		    }
+		    public void mouseExited(MouseEvent evt) {
+		    	lblPlay.setFont(new Font("Tahoma", Font.BOLD, 26));
+		    }
+		});
 		
-		JLabel label = new JLabel("Play");
-		label.setForeground(new Color(255, 215, 0));
-		label.setFont(new Font("Tahoma", Font.BOLD, 26));
-		label.setBounds(150, 282, 61, 31);
-		add(label);
-		
-		JLabel lblOptions_1 = new JLabel("Options");
+		final JLabel lblOptions_1 = new JLabel("Options");
 		lblOptions_1.setForeground(Color.BLACK);
 		lblOptions_1.setFont(new Font("Tahoma", Font.BOLD, 26));
-		lblOptions_1.setBounds(33, 189, 101, 31);
+		lblOptions_1.setBounds(33, 161, 152, 101);
+		lblOptions_1.addMouseListener(new MouseAdapter() {
+		    public void mouseEntered(MouseEvent evt) {
+		    	lblOptions_1.setFont(new Font("Tahoma", Font.BOLD, 30));		    	
+		    }
+		    public void mouseExited(MouseEvent evt) {
+		    	lblOptions_1.setFont(new Font("Tahoma", Font.BOLD, 26));
+		    }
+		});
 		add(lblOptions_1);
+
 		
-		JLabel lblOptions = new JLabel("Options");
-		lblOptions.setForeground(new Color(255, 215, 0));
-		lblOptions.setFont(new Font("Tahoma", Font.BOLD, 26));
-		lblOptions.setBounds(35, 192, 101, 31);
-		add(lblOptions);
 		
-		JLabel lblScores_1 = new JLabel("Scores");
+		final JLabel lblScores_1 = new JLabel("Scores");
 		lblScores_1.setForeground(new Color(0, 0, 0));
 		lblScores_1.setFont(new Font("Tahoma", Font.BOLD, 26));
-		lblScores_1.setBounds(208, 180, 101, 31);
+		lblScores_1.setBounds(210, 145, 129, 114);
+		lblScores_1.addMouseListener(new MouseAdapter() {
+		    public void mouseEntered(MouseEvent evt) {
+		    	lblScores_1.setFont(new Font("Tahoma", Font.BOLD, 30));		    	
+		    }
+		    public void mouseExited(MouseEvent evt) {
+		    	lblScores_1.setFont(new Font("Tahoma", Font.BOLD, 26));
+		    }
+		});
 		add(lblScores_1);
-		
-		JLabel lblScores_2 = new JLabel("Scores");
-		lblScores_2.setForeground(new Color(255, 215, 0));
-		lblScores_2.setFont(new Font("Tahoma", Font.BOLD, 26));
-		lblScores_2.setBounds(212, 183, 101, 31);
-		add(lblScores_2);
 	}
 	
 	public void paintComponent( Graphics g )
@@ -123,4 +132,7 @@ public class JavaGameMenu extends JPanel{
     	Media hit = new Media(uri);
     	return hit;
 	}
+	
 }
+
+

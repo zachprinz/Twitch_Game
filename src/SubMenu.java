@@ -17,7 +17,7 @@ import java.awt.event.MouseEvent;
 
 
 public class SubMenu extends JPanel {
-	static String[] beatLocs = new String[3];
+	static String[] beatLocs = new String[4];
 	static ImageIcon backgroundImageIcon = new ImageIcon("subMenu.png");
 	static Image backGroundImage = backgroundImageIcon.getImage();
 	/**
@@ -52,9 +52,16 @@ public class SubMenu extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				SwingStart.selectedSong = 1;
-				lblTheRiddle.setText("    TheRiddle");
+		    	lblTheRiddle.setLocation((int)lblTheRiddle.getLocation().getX() + 20,(int) lblTheRiddle.getLocation().getY());		    	
 			}
+		    public void mouseEntered(MouseEvent evt) {
+		    	lblTheRiddle.setLocation((int)lblTheRiddle.getLocation().getX() + 10,(int) lblTheRiddle.getLocation().getY());		    	
+		    }
+		    public void mouseExited(MouseEvent evt) {
+		    	lblTheRiddle.setLocation((int)lblTheRiddle.getLocation().getX() - 10,(int) lblTheRiddle.getLocation().getY());		    	
+		    }
 		});
+
 		lblTheRiddle.setForeground(Color.WHITE);
 		lblTheRiddle.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblTheRiddle.setBounds(149, 155, 178, 20);
@@ -65,21 +72,42 @@ public class SubMenu extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				SwingStart.selectedSong = 2;
-				lblMaddness.setText("    Maddness");
+		    	lblMaddness.setLocation((int)lblMaddness.getLocation().getX() + 20,(int) lblMaddness.getLocation().getY());		    	
+
 			}
+		    public void mouseEntered(MouseEvent evt) {
+		    	lblMaddness.setLocation((int)lblMaddness.getLocation().getX() + 10,(int) lblMaddness.getLocation().getY());		    	
+		    }
+		    public void mouseExited(MouseEvent evt) {
+		    	lblMaddness.setLocation((int)lblMaddness.getLocation().getX() - 10,(int) lblMaddness.getLocation().getY());		    	
+		    }
 		});
 		lblMaddness.setForeground(Color.WHITE);
 		lblMaddness.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblMaddness.setBounds(151, 192, 176, 20);
 		add(lblMaddness);
 		
-		JLabel lblSplinter = new JLabel("Splinter");
+		final JLabel lblSplinter = new JLabel("Splinter");
+		lblSplinter.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				SwingStart.selectedSong = 3;
+		    	lblSplinter.setLocation((int)lblSplinter.getLocation().getX() + 20,(int) lblSplinter.getLocation().getY());		    	
+
+			}
+		    public void mouseEntered(MouseEvent evt) {
+		    	lblSplinter.setLocation((int)lblSplinter.getLocation().getX() + 10,(int) lblSplinter.getLocation().getY());		    	
+		    }
+		    public void mouseExited(MouseEvent evt) {
+		    	lblSplinter.setLocation((int)lblSplinter.getLocation().getX() - 10,(int) lblSplinter.getLocation().getY());		    	
+		    }
+		});
 		lblSplinter.setForeground(Color.WHITE);
 		lblSplinter.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblSplinter.setBounds(148, 231, 178, 20);
 		add(lblSplinter);
 		
-		JLabel lblStart = new JLabel("Start");
+		final JLabel lblStart = new JLabel("Start");
 		lblStart.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -94,6 +122,12 @@ public class SubMenu extends JPanel {
 				SwingStart.mediaPlayer.play();
 				SwingStart.board.startGame();
 			}
+		    public void mouseEntered(MouseEvent evt) {
+		    	lblStart.setFont(new Font("Tahoma", Font.BOLD, 20));		    	
+		    }
+		    public void mouseExited(MouseEvent evt) {
+		    	lblStart.setFont(new Font("Tahoma", Font.BOLD, 16));
+		    }
 		});
 		lblStart.setForeground(Color.WHITE);
 		lblStart.setFont(new Font("Tahoma", Font.BOLD, 16));
@@ -103,7 +137,8 @@ public class SubMenu extends JPanel {
 		beatLocs[0] = "TheRiddle";
 		beatLocs[1] = "TheRiddle";
 		beatLocs[2] = "Madness";
-
+		beatLocs[3] = "Splinter";
+		
 	}
 	public void paintComponent( Graphics g )
 	{
