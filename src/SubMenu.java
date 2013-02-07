@@ -20,6 +20,14 @@ public class SubMenu extends JPanel {
 	static String[] beatLocs = new String[4];
 	static ImageIcon backgroundImageIcon = new ImageIcon("subMenu.png");
 	static Image backGroundImage = backgroundImageIcon.getImage();
+	
+	GameLabel lblStart;
+	GameLabel lblEasy;
+	GameLabel lblMedium;
+	GameLabel lblHard;
+	GameLabel lblTheRiddle;
+	GameLabel lblMaddness;
+	GameLabel lblSplinter;
 	/**
 	 * Create the panel.
 	 */
@@ -29,36 +37,81 @@ public class SubMenu extends JPanel {
 		setSize(366, 366);
 		setLayout(null);
 		
-		JLabel lblEasy = new JLabel("Easy");
+		lblEasy = new GameLabel("Easy");
 		lblEasy.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblEasy.setForeground(new Color(255, 255, 255));
 		lblEasy.setBounds(236, 33, 90, 20);
+		lblEasy.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			
+				clearSelectedDifficulty();
+		    	lblEasy.setLocation((int)lblEasy.getLocation().getX() + 20,(int) lblEasy.getLocation().getY());		    	
+			}
+		    public void mouseEntered(MouseEvent evt) {
+		    	lblEasy.setLocation((int)lblEasy.getLocation().getX() + 15,(int) lblEasy.getLocation().getY());		    	
+		    }
+		    public void mouseExited(MouseEvent evt) {
+		    	lblEasy.setLocation((int)lblEasy.getLocation().getX() - 15,(int) lblEasy.getLocation().getY());		    	
+		    }
+		});
 		add(lblEasy);
 		
-		JLabel lblMedium = new JLabel("Medium");
+		lblMedium = new GameLabel("Medium");
 		lblMedium.setForeground(Color.WHITE);
 		lblMedium.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblMedium.setBounds(223, 69, 90, 20);
+		lblMedium.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			
+				clearSelectedDifficulty();
+		    	lblMedium.setLocation((int)lblMedium.getLocation().getX() + 20,(int) lblMedium.getLocation().getY());		    	
+			}
+		    public void mouseEntered(MouseEvent evt) {
+		    	lblMedium.setLocation((int)lblMedium.getLocation().getX() + 15,(int) lblMedium.getLocation().getY());		    	
+		    }
+		    public void mouseExited(MouseEvent evt) {
+		    	lblMedium.setLocation((int)lblMedium.getLocation().getX() - 15,(int) lblMedium.getLocation().getY());		    	
+		    }
+		});
 		add(lblMedium);
 		
-		JLabel lblHard = new JLabel("Hard");
+		lblHard = new GameLabel("Hard");
 		lblHard.setForeground(Color.WHITE);
 		lblHard.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblHard.setBounds(237, 104, 90, 20);
+		lblHard.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				clearSelectedDifficulty();
+		    	lblHard.setLocation((int)lblHard.getLocation().getX() + 20,(int) lblHard.getLocation().getY());		    	
+			}
+		    public void mouseEntered(MouseEvent evt) {
+		    	lblHard.setLocation((int)lblHard.getLocation().getX() + 15,(int) lblHard.getLocation().getY());		    	
+		    }
+		    public void mouseExited(MouseEvent evt) {
+		    	lblHard.setLocation((int)lblHard.getLocation().getX() - 15,(int) lblHard.getLocation().getY());		    	
+		    }
+		});
 		add(lblHard);
 		
-		final JLabel lblTheRiddle = new JLabel("The Riddle");
+		lblTheRiddle = new GameLabel("The Riddle");
 		lblTheRiddle.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				SwingStart.selectedSong = 1;
-		    	lblTheRiddle.setLocation((int)lblTheRiddle.getLocation().getX() + 20,(int) lblTheRiddle.getLocation().getY());		    	
+				clearSelectedSong();
+				lblTheRiddle.setSelected(true);
 			}
 		    public void mouseEntered(MouseEvent evt) {
-		    	lblTheRiddle.setLocation((int)lblTheRiddle.getLocation().getX() + 10,(int) lblTheRiddle.getLocation().getY());		    	
+		    	if(!lblTheRiddle.getSelected())
+		    	lblTheRiddle.setLocation((int)lblTheRiddle.getLocation().getX() + 15,(int) lblTheRiddle.getLocation().getY());		    	
 		    }
 		    public void mouseExited(MouseEvent evt) {
-		    	lblTheRiddle.setLocation((int)lblTheRiddle.getLocation().getX() - 10,(int) lblTheRiddle.getLocation().getY());		    	
+		    	if(!lblTheRiddle.getSelected())
+		    	lblTheRiddle.setLocation((int)lblTheRiddle.getLocation().getX() - 15,(int) lblTheRiddle.getLocation().getY());		    	
 		    }
 		});
 
@@ -67,19 +120,21 @@ public class SubMenu extends JPanel {
 		lblTheRiddle.setBounds(149, 155, 178, 20);
 		add(lblTheRiddle);
 		
-		final JLabel lblMaddness = new JLabel("Maddness");
+		lblMaddness = new GameLabel("Maddness");
 		lblMaddness.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				SwingStart.selectedSong = 2;
-		    	lblMaddness.setLocation((int)lblMaddness.getLocation().getX() + 20,(int) lblMaddness.getLocation().getY());		    	
-
+				clearSelectedSong();
+				lblMaddness.setSelected(true);
 			}
 		    public void mouseEntered(MouseEvent evt) {
-		    	lblMaddness.setLocation((int)lblMaddness.getLocation().getX() + 10,(int) lblMaddness.getLocation().getY());		    	
+		    	if(!lblMaddness.getSelected())
+		    	lblMaddness.setLocation((int)lblMaddness.getLocation().getX() + 15,(int) lblMaddness.getLocation().getY());		    	
 		    }
 		    public void mouseExited(MouseEvent evt) {
-		    	lblMaddness.setLocation((int)lblMaddness.getLocation().getX() - 10,(int) lblMaddness.getLocation().getY());		    	
+		    	if(!lblMaddness.getSelected())
+		    	lblMaddness.setLocation((int)lblMaddness.getLocation().getX() - 15,(int) lblMaddness.getLocation().getY());		    	
 		    }
 		});
 		lblMaddness.setForeground(Color.WHITE);
@@ -87,19 +142,21 @@ public class SubMenu extends JPanel {
 		lblMaddness.setBounds(151, 192, 176, 20);
 		add(lblMaddness);
 		
-		final JLabel lblSplinter = new JLabel("Splinter");
+		lblSplinter = new GameLabel("Splinter");
 		lblSplinter.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				SwingStart.selectedSong = 3;
-		    	lblSplinter.setLocation((int)lblSplinter.getLocation().getX() + 20,(int) lblSplinter.getLocation().getY());		    	
-
+				clearSelectedSong();
+				lblSplinter.setSelected(true);
 			}
 		    public void mouseEntered(MouseEvent evt) {
-		    	lblSplinter.setLocation((int)lblSplinter.getLocation().getX() + 10,(int) lblSplinter.getLocation().getY());		    	
+		    	if(!lblSplinter.getSelected())
+		    	lblSplinter.setLocation((int)lblSplinter.getLocation().getX() + 15,(int) lblSplinter.getLocation().getY());		    	
 		    }
 		    public void mouseExited(MouseEvent evt) {
-		    	lblSplinter.setLocation((int)lblSplinter.getLocation().getX() - 10,(int) lblSplinter.getLocation().getY());		    	
+		    	if(!lblSplinter.getSelected())
+		    	lblSplinter.setLocation((int)lblSplinter.getLocation().getX() - 15,(int) lblSplinter.getLocation().getY());		    	
 		    }
 		});
 		lblSplinter.setForeground(Color.WHITE);
@@ -107,10 +164,12 @@ public class SubMenu extends JPanel {
 		lblSplinter.setBounds(148, 231, 178, 20);
 		add(lblSplinter);
 		
-		final JLabel lblStart = new JLabel("Start");
+		lblStart = new GameLabel("Start");
 		lblStart.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				clearSelectedSong();
+				clearSelectedDifficulty();
 				setVisible(false);
 				setFocusable(false);
 				lblTheRiddle.setText("The Riddle");
@@ -154,4 +213,31 @@ public class SubMenu extends JPanel {
     	Media hit = new Media(uri);
     	return hit;
 	}
-}
+	
+	public void clearSelectedSong() {
+		if(lblTheRiddle.getSelected()){
+			lblTheRiddle.setSelected(false);
+	    	lblTheRiddle.setLocation((int)lblTheRiddle.getLocation().getX() - 15,(int) lblTheRiddle.getLocation().getY());		    	
+		}
+		if(lblMaddness.getSelected()) {
+			lblMaddness.setSelected(false);
+    		lblMaddness.setLocation((int)lblMaddness.getLocation().getX() - 15,(int) lblMaddness.getLocation().getY());		    	
+	}
+		if(lblSplinter.getSelected()) {
+			lblSplinter.setSelected(false);
+	    	lblSplinter.setLocation((int)lblSplinter.getLocation().getX() - 15,(int) lblSplinter.getLocation().getY());		    	
+		}
+
+		}
+	
+	public void clearSelectedDifficulty() {
+		if(lblEasy.getSelected())
+			lblEasy.setSelected(false);
+		if(lblMedium.getSelected())
+			lblMedium.setSelected(false);
+		if(lblHard.getSelected())
+			lblHard.setSelected(false);
+			
+		}
+	}
+
