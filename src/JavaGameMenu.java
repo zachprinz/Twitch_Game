@@ -70,7 +70,7 @@ public class JavaGameMenu extends JPanel{
 			}
 		});
 		lblPlay.setFont(new Font("Tahoma", Font.BOLD, 26));
-		lblPlay.setBounds(143, 287, 101, 70);
+		lblPlay.setBounds(143, 293, 101, 70);
 		add(lblPlay);
 		lblPlay.addMouseListener(new MouseAdapter() {
 		    public void mouseEntered(MouseEvent evt) {
@@ -84,7 +84,7 @@ public class JavaGameMenu extends JPanel{
 		final JLabel lblOptions_1 = new JLabel("Options");
 		lblOptions_1.setForeground(Color.WHITE);
 		lblOptions_1.setFont(new Font("Tahoma", Font.BOLD, 26));
-		lblOptions_1.setBounds(127, 175, 152, 101);
+		lblOptions_1.setBounds(127, 181, 152, 101);
 		lblOptions_1.addMouseListener(new MouseAdapter() {
 		    public void mouseEntered(MouseEvent evt) {
 		    	lblOptions_1.setFont(new Font("Tahoma", Font.BOLD, 30));		    	
@@ -98,7 +98,7 @@ public class JavaGameMenu extends JPanel{
 		final JLabel lblScores_1 = new JLabel("Scores");
 		lblScores_1.setForeground(Color.WHITE);
 		lblScores_1.setFont(new Font("Tahoma", Font.BOLD, 26));
-		lblScores_1.setBounds(133, 219, 129, 114);
+		lblScores_1.setBounds(133, 225, 129, 114);
 		lblScores_1.addMouseListener(new MouseAdapter() {
 		    public void mouseEntered(MouseEvent evt) {
 		    	lblScores_1.setFont(new Font("Tahoma", Font.BOLD, 30));		    	
