@@ -66,7 +66,7 @@ public class SubMenu extends JPanel {
 		lblMedium = new GameLabel("Medium");
 		lblMedium.setForeground(Color.WHITE);
 		lblMedium.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblMedium.setBounds(223, 69, 90, 20);
+		lblMedium.setBounds(223, 77, 90, 20);
 		lblMedium.setLocation();
 		lblMedium.addMouseListener(new MouseAdapter() {
 			@Override
@@ -85,7 +85,7 @@ public class SubMenu extends JPanel {
 		lblHard = new GameLabel("Hard");
 		lblHard.setForeground(Color.WHITE);
 		lblHard.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblHard.setBounds(237, 104, 90, 20);
+		lblHard.setBounds(237, 122, 90, 20);
 		lblHard.setLocation();
 		lblHard.addMouseListener(new MouseAdapter() {
 			@Override
@@ -113,7 +113,7 @@ public class SubMenu extends JPanel {
 
 		lblTheRiddle.setForeground(Color.WHITE);
 		lblTheRiddle.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblTheRiddle.setBounds(149, 155, 178, 20);
+		lblTheRiddle.setBounds(52, 221, 178, 20);
 		lblTheRiddle.setLocation();
 		add(lblTheRiddle);
 		
@@ -129,7 +129,7 @@ public class SubMenu extends JPanel {
 		});
 		lblMaddness.setForeground(Color.WHITE);
 		lblMaddness.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblMaddness.setBounds(151, 192, 176, 20);
+		lblMaddness.setBounds(50, 267, 176, 20);
 		lblMaddness.setLocation();
 		add(lblMaddness);
 		
@@ -146,7 +146,7 @@ public class SubMenu extends JPanel {
 		});
 		lblSplinter.setForeground(Color.WHITE);
 		lblSplinter.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblSplinter.setBounds(148, 231, 178, 20);
+		lblSplinter.setBounds(50, 313, 178, 20);
 		lblSplinter.setLocation();
 		add(lblSplinter);
 		
@@ -174,7 +174,7 @@ public class SubMenu extends JPanel {
 		});
 		lblStart.setForeground(Color.WHITE);
 		lblStart.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblStart.setBounds(148, 302, 90, 20);
+		lblStart.setBounds(240, 269, 57, 20);
 		add(lblStart);
 				
 		beatLocs[0] = "TheRiddle";

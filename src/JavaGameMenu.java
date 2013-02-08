@@ -61,7 +61,7 @@ public class JavaGameMenu extends JPanel{
 		beatLocs[3] = "Splinter";
 		
 		final JLabel lblPlay = new JLabel("Play");
-		lblPlay.setForeground(new Color(0, 0, 0));
+		lblPlay.setForeground(Color.WHITE);
 		lblPlay.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 				setVisible(false);
@@ -70,7 +70,7 @@ public class JavaGameMenu extends JPanel{
 			}
 		});
 		lblPlay.setFont(new Font("Tahoma", Font.BOLD, 26));
-		lblPlay.setBounds(138, 259, 101, 70);
+		lblPlay.setBounds(143, 287, 101, 70);
 		add(lblPlay);
 		lblPlay.addMouseListener(new MouseAdapter() {
 		    public void mouseEntered(MouseEvent evt) {
@@ -82,9 +82,9 @@ public class JavaGameMenu extends JPanel{
 		});
 		
 		final JLabel lblOptions_1 = new JLabel("Options");
-		lblOptions_1.setForeground(Color.BLACK);
+		lblOptions_1.setForeground(Color.WHITE);
 		lblOptions_1.setFont(new Font("Tahoma", Font.BOLD, 26));
-		lblOptions_1.setBounds(33, 161, 152, 101);
+		lblOptions_1.setBounds(127, 175, 152, 101);
 		lblOptions_1.addMouseListener(new MouseAdapter() {
 		    public void mouseEntered(MouseEvent evt) {
 		    	lblOptions_1.setFont(new Font("Tahoma", Font.BOLD, 30));		    	
@@ -96,9 +96,9 @@ public class JavaGameMenu extends JPanel{
 		add(lblOptions_1);
 
 		final JLabel lblScores_1 = new JLabel("Scores");
-		lblScores_1.setForeground(new Color(0, 0, 0));
+		lblScores_1.setForeground(Color.WHITE);
 		lblScores_1.setFont(new Font("Tahoma", Font.BOLD, 26));
-		lblScores_1.setBounds(210, 145, 129, 114);
+		lblScores_1.setBounds(133, 219, 129, 114);
 		lblScores_1.addMouseListener(new MouseAdapter() {
 		    public void mouseEntered(MouseEvent evt) {
 		    	lblScores_1.setFont(new Font("Tahoma", Font.BOLD, 30));		    	
