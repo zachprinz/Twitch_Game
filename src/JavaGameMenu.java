@@ -70,7 +70,7 @@ public class JavaGameMenu extends JPanel{
 			}
 		});
 		lblPlay.setFont(new Font("Tahoma", Font.BOLD, 26));
-		lblPlay.setBounds(143, 293, 101, 70);
+		lblPlay.setBounds(143, 307, 101, 45);
 		add(lblPlay);
 		lblPlay.addMouseListener(new MouseAdapter() {
 		    public void mouseEntered(MouseEvent evt) {
@@ -81,24 +81,29 @@ public class JavaGameMenu extends JPanel{
 		    }
 		});
 		
-		final JLabel lblOptions_1 = new JLabel("Options");
+		final JLabel lblOptions_1 = new JLabel("How To Play");
 		lblOptions_1.setForeground(Color.WHITE);
-		lblOptions_1.setFont(new Font("Tahoma", Font.BOLD, 26));
-		lblOptions_1.setBounds(127, 181, 152, 101);
+		lblOptions_1.setFont(new Font("Tahoma", Font.BOLD, 22));
+		lblOptions_1.setBounds(115, 201, 181, 57);
 		lblOptions_1.addMouseListener(new MouseAdapter() {
 		    public void mouseEntered(MouseEvent evt) {
-		    	lblOptions_1.setFont(new Font("Tahoma", Font.BOLD, 30));		    	
+		    	lblOptions_1.setFont(new Font("Tahoma", Font.BOLD, 26));		    	
 		    }
 		    public void mouseExited(MouseEvent evt) {
-		    	lblOptions_1.setFont(new Font("Tahoma", Font.BOLD, 26));
+		    	lblOptions_1.setFont(new Font("Tahoma", Font.BOLD, 22));
 		    }
+			public void mouseClicked(MouseEvent arg0) {
+				setVisible(false);
+				setFocusable(false);
+				SwingStart.htpMenu.setVisible(true);
+			}
 		});
 		add(lblOptions_1);
 
 		final JLabel lblScores_1 = new JLabel("Scores");
 		lblScores_1.setForeground(Color.WHITE);
 		lblScores_1.setFont(new Font("Tahoma", Font.BOLD, 26));
-		lblScores_1.setBounds(133, 225, 129, 114);
+		lblScores_1.setBounds(137, 254, 129, 57);
 		lblScores_1.addMouseListener(new MouseAdapter() {
 		    public void mouseEntered(MouseEvent evt) {
 		    	lblScores_1.setFont(new Font("Tahoma", Font.BOLD, 30));		    	
@@ -106,6 +111,12 @@ public class JavaGameMenu extends JPanel{
 		    public void mouseExited(MouseEvent evt) {
 		    	lblScores_1.setFont(new Font("Tahoma", Font.BOLD, 26));
 		    }
+			public void mouseClicked(MouseEvent arg0) {
+				setVisible(false);
+				setFocusable(false);
+				SwingStart.highScoresMenu.setVisible(true);
+			}
+		    
 		});
 		add(lblScores_1);
 	}

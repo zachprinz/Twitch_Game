@@ -158,6 +158,10 @@ public class SubMenu extends JPanel {
 				clearSelectedDifficulty();
 				setVisible(false);
 				setFocusable(false);
+				SwingStart.board.setFocusable(true);
+				SwingStart.layeredPane.setFocusable(true);
+				SwingStart.layeredPane.setVisible(true);
+				//SwingStart.pauseMenu.setVisible(true);
 				System.out.println(getSong());
 				SwingStart.board.mlm.loadLevel(beatLocs[selectedSong]);
 				SwingStart.board.getLevel();
@@ -176,6 +180,18 @@ public class SubMenu extends JPanel {
 		lblStart.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblStart.setBounds(240, 269, 57, 20);
 		add(lblStart);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				setVisible(false);
+				setFocusable(false);
+				SwingStart.menu.setVisible(true);
+			}
+		});
+		lblNewLabel.setBounds(2, 2, 31, 31);
+		add(lblNewLabel);
 				
 		beatLocs[0] = "TheRiddle";
 		beatLocs[1] = "TheRiddle";

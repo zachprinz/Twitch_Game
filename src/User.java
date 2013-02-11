@@ -44,7 +44,7 @@ public class User {
 		position = 0;
 		visible = true;
 		move = new Move();
-		timer = new javax.swing.Timer(SwingStart.subMenu.getSpeed() - 2, move);
+		timer = new javax.swing.Timer((SwingStart.subMenu.getSpeed() - 2) * 2, move);
 		timer.setRepeats(true);
 		timer.setInitialDelay(0);
 		timer.start();
@@ -138,6 +138,14 @@ public class User {
 	}
 	public void setDirection(int i) {
 		direction = i;
+	}
+	
+	public void pause() {
+		timer.stop();
+	}
+	public void unPause() {
+		timer = new javax.swing.Timer((SwingStart.subMenu.getSpeed()) * 2, move);
+		timer.start();
 	}
 	public void switchDirection() {
 		if(direction == 1)

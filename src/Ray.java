@@ -44,7 +44,7 @@ public class Ray {
 		center = points.get(0);
 		orgin = new Point(183,183);
 		moveRay = new MoveRay();
-		timer = new javax.swing.Timer(SwingStart.subMenu.getSpeed(), moveRay);
+		timer = new javax.swing.Timer(SwingStart.subMenu.getSpeed() * 2, moveRay);
 		timer.setRepeats(true);
 		timer.setInitialDelay(0);
 		timer.start();
@@ -155,12 +155,20 @@ public class Ray {
 		else
 			direction = 1;
 	}
+	
+	public void pause() {
+		timer.stop();
+	}
+	public void unPause() {
+		timer =  new javax.swing.Timer(SwingStart.subMenu.getSpeed() * 2, moveRay);
+		timer.start();
+	}
 }
 
 class MoveRay implements ActionListener {
 	public void actionPerformed(ActionEvent evt) {
-		int runTime = (int) ((System.currentTimeMillis()/10) - MusicGameBoard.getStartTime());
-		if(MusicGameBoard.getBeats().get(MusicGameBoard.ray.beatsSoFar) == runTime + 15) { 
+		int runTime = (int) ((System.currentTimeMillis()/10) - MusicGameBoard.getStartTime() - MusicGameBoard.getPauseTime());
+		if(MusicGameBoard.getBeats().get(MusicGameBoard.ray.beatsSoFar) == runTime + 10) { 
 				MusicGameBoard.ray.switchDirection();
 				MusicGameBoard.ray.beatsSoFar++;
 		}

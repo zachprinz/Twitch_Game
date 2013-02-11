@@ -7,13 +7,14 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.paint.Color;
+//import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JLayeredPane;
 import javax.swing.KeyStroke;
 
 public class SwingStart extends JFrame {
@@ -21,6 +22,11 @@ public class SwingStart extends JFrame {
 	public static MusicGameBoard board = new MusicGameBoard();
 	public static JavaGameMenu menu = new JavaGameMenu();
 	public static SubMenu subMenu = new SubMenu();
+	public static HighScoresMenu highScoresMenu = new HighScoresMenu();
+	public static HTPMenu htpMenu = new HTPMenu();
+	public static PauseMenu pauseMenu = new PauseMenu();
+	
+	static JLayeredPane layeredPane = new JLayeredPane();
 	
 	private static Action leftAction;
 	private static Action rightAction;
@@ -40,7 +46,7 @@ public class SwingStart extends JFrame {
 		songLocs[3] = "Splinter.mp3";
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(366, 366);
+		setSize(372, 390);
 		setLocationRelativeTo(null);
 		setTitle("Music Game");
 		setResizable(false);
@@ -67,11 +73,43 @@ public class SwingStart extends JFrame {
 		board.getActionMap().put( "doLeftAction" , leftAction );
 		board.getActionMap().put( "doRightAction", rightAction );
 		board.getActionMap().put( "doExitAction", exitAction );
+		
+
+		
+		add(layeredPane);
+		pauseMenu.setVisible(true);
+		board.setVisible(true);
+		
+		layeredPane.add(pauseMenu, JLayeredPane.PALETTE_LAYER);
+		layeredPane.add(board, JLayeredPane.DEFAULT_LAYER);
+		layeredPane.setLayer(board, 1);
+		layeredPane.setLayer(pauseMenu, 0);
+		layeredPane.setBounds(0,0,370,380);
+		
+		layeredPane.setVisible(false);
+
 
 		add(subMenu);
 		subMenu.setVisible(false);
 		add(board);
+		board.setVisible(false);
 		add(menu);
+		add(highScoresMenu);
+		highScoresMenu.setVisible(false);
+		add(htpMenu);
+		htpMenu.setVisible(false);
+		add(pauseMenu);
+		pauseMenu.setVisible(false);
+		
+		
+		add(layeredPane);
+		pauseMenu.setVisible(false);
+		board.setVisible(true);
+		layeredPane.add(pauseMenu, JLayeredPane.PALETTE_LAYER);
+		layeredPane.add(board, JLayeredPane.DEFAULT_LAYER);
+		layeredPane.setBounds(0,0,370,380);
+		layeredPane.setVisible(false);
+
 		
 	}
     public static void initFX(JFXPanel fxPanel) {
@@ -90,7 +128,7 @@ public class SwingStart extends JFrame {
     	Media hit = new Media(uri);
     	mediaPlayer = new MediaPlayer(hit);
     	
-    	Scene myScene = new Scene(root,400,400,Color.BLACK);
+    	Scene myScene = new Scene(root,400,400);
     	return myScene;
     	
     	
@@ -98,7 +136,6 @@ public class SwingStart extends JFrame {
     
     public static void reset() {
     	board.reset();
-    	//board.mlm.reset();
     	subMenu.reset();
     }
 
@@ -125,9 +162,9 @@ class ExitAction extends AbstractAction
 {
   public void actionPerformed( ActionEvent e )
   {
-	 SwingStart.reset();
-     SwingStart.board.setVisible(false);
-     SwingStart.menu.setVisible(true);
-     SwingStart.mediaPlayer.stop();
+	  SwingStart.pauseMenu.setVisible(true);
+	  System.out.println("pause");
+	  SwingStart.board.pause();
+	  SwingStart.mediaPlayer.pause();
   }
 } 

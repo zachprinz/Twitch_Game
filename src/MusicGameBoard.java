@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -25,6 +26,7 @@ public class MusicGameBoard extends JPanel implements ActionListener{
 	private int GAME_STAGE;
 	private JPanel panel1;
 	private int PLAYING = 2;
+	private int PAUSED = 4;
 	private int MENU = 0;
 	private int DEAL = 3;
 	static boolean pause = false;
@@ -35,11 +37,17 @@ public class MusicGameBoard extends JPanel implements ActionListener{
 	MusicLevelManager mlm = new MusicLevelManager();
 	private static ArrayList<Integer> beats;
 	static int startTime;
-	Timer time;
+	Timer time = new Timer(5, this);
 	private boolean debug = true;
 	private static boolean printed = false;
+	private int pauseTimeStart;
+	private static int pauseTimeTotal = 0;
+
 
 	public MusicGameBoard() {
+		GAME_STAGE = MENU;
+		//time = new Timer(5, this);
+		time.stop();
 		setFocusable(true);
 		setBackground(Color.GRAY);
 		setSize(366, 366);
@@ -50,33 +58,36 @@ public class MusicGameBoard extends JPanel implements ActionListener{
 	public void reset() {
 		ray.reset();
 		user.reset();
-		//beats.clear();
+		ray.pause();
+		user.pause();
 		score = 0;
-		ray = new Ray();
-		user = new User();
 	}
 	
 	public void startGame() {
-		user = new User();
-		ray = new Ray();
-		
+		if(ray == null || user == null) {
+			user = new User();
+			ray = new Ray();
+			System.out.println("Making new User/Ray");
+		}
 		setFocusable(true);
 		setEnabled(true);
 		setVisible(true);
-		
+		unPause();
 		startTime = (int) (System.currentTimeMillis() / 10);
 		GAME_STAGE = PLAYING;
-		time = new Timer(5, this);
 		time.setRepeats(true);
 		time.setInitialDelay(0);
+		GAME_STAGE = PLAYING;
 		time.start();
+		
 	}
 	
 	public void getLevel() {
 		beats = mlm.initBeats();
 	}
 
-	public void paint(Graphics g) {		
+	public void paint(Graphics g) {	
+		if(GAME_STAGE == PLAYING || GAME_STAGE == PAUSED) {
 		//Graphics2D g2d = (Graphics2D) g;
 		Image bufferedImage = createImage(366, 366);
 		Graphics2D buffer = (Graphics2D) bufferedImage.getGraphics();
@@ -106,12 +117,34 @@ public class MusicGameBoard extends JPanel implements ActionListener{
 			buffer.drawString("Next Beat: " + MusicGameBoard.getBeats().get(MusicGameBoard.ray.beatsSoFar), 0, 50);
 		}
 		g.drawImage(bufferedImage, 0, 0, this);
-
+		}
+	}
+	public void pause() {
+		ray.pause();
+		user.pause();
+		time.stop();
+		pauseTimeStart = (int) (System.currentTimeMillis()/10);
+		GAME_STAGE = PAUSED;
+	}
+	
+	public void unPause() {
+		pauseTimeTotal += (System.currentTimeMillis()/10) - pauseTimeStart;
+		ray.unPause();
+		user.unPause();
+		time.start();
+		GAME_STAGE = PLAYING;
+	}
+	
+	public static int getPauseTime() {
+		return pauseTimeTotal;
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		if (GAME_STAGE == PLAYING) {
 			checkCollisions();
+			repaint();
+		}
+		if (GAME_STAGE == PAUSED) {
 			repaint();
 		}
 	}
